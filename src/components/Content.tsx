@@ -32,7 +32,7 @@ export function Content() {
             Why Choose First Rank for Effortless Learning?
           </h2>
           <p className="max-w-3xl mx-auto text-muted-foreground md:text-xl/relaxed text-center">
-            In today's digital age, students have access to a wealth of educational resources. However, not all platforms provide a safe, engaging, and effective learning experience. First Rank is a revolutionary AI-powered mobile app designed to transform the way students learn. With its unique features and expert-crafted content, First Rank is the ideal choice for students seeking to excel in their studies.
+            In today&apos;s digital age, students have access to a wealth of educational resources. However, not all platforms provide a safe, engaging, and effective learning experience. First Rank is a revolutionary AI-powered mobile app designed to transform the way students learn. With its unique features and expert-crafted content, First Rank is the ideal choice for students seeking to excel in their studies.
           </p>
         </motion.div>
 
@@ -59,7 +59,7 @@ export function Content() {
         <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="text-center bg-muted p-8 rounded-lg">
           <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl mb-4">Conclusion</h3>
           <p className="max-w-3xl mx-auto text-muted-foreground md:text-xl/relaxed">
-            First Rank is more than just an educational app – it's a comprehensive learning platform that provides students with the tools they need to succeed. With its safe, engaging, and effective approach to learning, First Rank is the perfect choice for students seeking to excel in their studies.
+            First Rank is more than just an educational app – it&apos;s a comprehensive learning platform that provides students with the tools they need to succeed. With its safe, engaging, and effective approach to learning, First Rank is the perfect choice for students seeking to excel in their studies.
           </p>
           <button className="mt-6 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8">
             <Download className="mr-2 h-5 w-5" />

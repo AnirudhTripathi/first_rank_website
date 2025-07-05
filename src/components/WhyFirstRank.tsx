@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BrainCircuit, Zap, BarChart, BookOpen, Users, Award, Clock, MessageSquare, Shield } from "lucide-react";
+import { BrainCircuit, BookOpen, Users, Award, Clock, MessageSquare } from "lucide-react";
 
 import type { Variants } from 'framer-motion';
 

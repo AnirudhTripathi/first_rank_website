@@ -1,5 +1,6 @@
 import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = [
   {
@@ -57,9 +58,11 @@ export function Footer() {
           {/* Logo and description */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <img 
+              <Image 
                 src="/Images/first_rank_logo.png" 
                 alt="First Rank Logo" 
+                width={32}
+                height={32}
                 className="h-8 w-auto" 
               />
               <span className="ml-2 text-2xl font-bold text-white">First Rank</span>
