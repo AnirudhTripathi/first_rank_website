@@ -1,16 +1,9 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ShieldCheck, BookOpen, Hand, Brain, Languages, Star, Users, Download } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck, BookOpen, Hand, Brain, Languages, Users, Download } from "lucide-react";
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -66,10 +59,13 @@ export function Content() {
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <img 
+              <Image 
                 src="/Svgs/learning_illustration.svg" 
                 alt="Learning Illustration" 
+                width={500}
+                height={400}
                 className="w-full max-w-xl h-auto"
+                priority
               />
             </div>
           </div>
@@ -251,13 +247,4 @@ export function Content() {
   );
 }
 
-const BenefitCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-  <motion.div 
-    className="flex flex-col items-center text-center p-6 bg-muted rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
-    variants={cardVariants}
-  >
-    <div className="mb-4 text-4xl">{icon}</div>
-    <h4 className="text-xl font-bold mb-2">{title}</h4>
-    <p className="text-muted-foreground">{description}</p>
-  </motion.div>
-);
+
