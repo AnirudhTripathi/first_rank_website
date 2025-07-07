@@ -74,7 +74,20 @@ const features = [
 
 export function WhyFirstRank() {
   return (
-    <section id="features" className="py-16 md:py-24 bg-white">
+    <section id="features" className="py-16 md:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 -z-10 w-full h-full"
+        style={{
+          backgroundImage: 'url(/Images/bg_landing.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          opacity: 0.3
+        }}
+      />
+      <div className="absolute inset-0 -z-10 bg-white/70" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

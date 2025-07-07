@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
@@ -19,24 +19,46 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-background/80 backdrop-blur-sm z-50">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2" passHref>
-              <Image 
-                src="/Images/first_rank_logo.png" 
-                alt="First Rank Logo" 
-                width={32}
-                height={32}
-                className="h-8 w-auto"
-              />
+            <Link href="/" className="flex items-center space-x-2 group" passHref>
+              <div className="flex items-center">
+                <Image 
+                  src="/Images/first_rank_logo.png" 
+                  alt="First Rank Logo" 
+                  width={32}
+                  height={32}
+                  className="h-8 w-auto transition-transform duration-200 group-hover:scale-105"
+                />
+                <span className="ml-2 text-xl font-bold bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-black">
+                  First Rank
+                </span>
+              </div>
             </Link>
           </div>
           <div className="hidden md:block">

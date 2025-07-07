@@ -38,5 +38,34 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: var(--font-montserrat), sans-serif;
+    position: relative;
+  }
+
+  /* Background image is now handled in layout.tsx */
+
+  /* Ensure content is above the background */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Add a subtle overlay to sections for better readability */
+  .bg-overlay {
+    position: relative;
+  }
+
+  .bg-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: -1;
+  }
+
+  .dark .bg-overlay::after {
+    background: rgba(10, 10, 10, 0.9);
   }
 }

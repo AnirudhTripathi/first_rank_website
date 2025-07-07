@@ -22,38 +22,217 @@ const fadeIn: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
 };
 
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 export function Content() {
   return (
     <section className="py-12 md:py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6 space-y-12">
         
-        <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-4">
-            Why Choose First Rank for Effortless Learning?
-          </h2>
-          <p className="max-w-3xl mx-auto text-muted-foreground md:text-xl/relaxed text-center">
-            In today&apos;s digital age, students have access to a wealth of educational resources. However, not all platforms provide a safe, engaging, and effective learning experience. First Rank is a revolutionary AI-powered mobile app designed to transform the way students learn. With its unique features and expert-crafted content, First Rank is the ideal choice for students seeking to excel in their studies.
-          </p>
+        <motion.div 
+          variants={fadeIn} 
+          initial="initial" 
+          whileInView="animate" 
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6 text-left">
+                Why Choose First Rank for Effortless Learning?
+              </h2>
+              <p className="text-muted-foreground md:text-lg/relaxed text-left">
+                In today&apos;s digital age, students have access to a wealth of educational resources. However, not all platforms provide a safe, engaging, and effective learning experience. First Rank is a revolutionary AI-powered mobile app designed to transform the way students learn. With its unique features and expert-crafted content, First Rank is the ideal choice for students seeking to excel in their studies.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <img 
+                src="/Svgs/learning_illustration.svg" 
+                alt="Learning Illustration" 
+                className="w-full max-w-xl h-auto"
+              />
+            </div>
+          </div>
         </motion.div>
 
-        <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}>
-          <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl text-center mb-8">Key Benefits of First Rank</h3>
-          <motion.div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <BenefitCard icon={<ShieldCheck className="text-green-500" />} title="Safe and Secure Environment" description="First Rank prioritizes student safety, filtering out inappropriate content. Parents can have peace of mind knowing their children are learning in a secure environment." />
-            <BenefitCard icon={<BookOpen className="text-blue-500" />} title="Expert-Crafted Content" description="The app is loaded with curriculum-related syllabus crafted by experts, ensuring students receive accurate and relevant information, plus general knowledge and interesting facts." />
-            <BenefitCard icon={<Hand className="text-purple-500" />} title="Easy-to-Use Interface" description="A simple and intuitive interface, accessible to all ages. The touch-to-speak feature simulates a real classroom experience." />
-            <BenefitCard icon={<Brain className="text-pink-500" />} title="Personalized Learning" description="The AI-powered teacher provides personalized support, answering questions and helping students revise and learn at their own pace." />
-            <BenefitCard icon={<Languages className="text-yellow-500" />} title="Indian Language Support" description="First Rank supports all major Indian languages, and the AI teacher communicates in Indian English slang, ensuring students feel comfortable and engaged." />
+        <motion.div 
+          variants={fadeIn} 
+          initial="initial" 
+          whileInView="animate" 
+          viewport={{ once: true, margin: "-100px" }} 
+          className="pt-20"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 mb-4">
+              Key Benefits of First Rank
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover how First Rank transforms learning with its innovative features and student-focused approach
+            </p>
+          </motion.div>
+
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {[
+              {
+                icon: <ShieldCheck className="h-12 w-12" />,
+                title: "Safe and Secure Environment",
+                description: "First Rank prioritizes student safety, filtering out inappropriate content. Parents can have peace of mind knowing their children are learning in a secure environment.",
+                color: "from-green-500 to-emerald-400"
+              },
+              {
+                icon: <BookOpen className="h-12 w-12" />,
+                title: "Expert-Crafted Content",
+                description: "The app is loaded with curriculum-related syllabus crafted by experts, ensuring students receive accurate and relevant information.",
+                color: "from-blue-500 to-cyan-400"
+              },
+              {
+                icon: <Hand className="h-12 w-12" />,
+                title: "Easy-to-Use Interface",
+                description: "A simple and intuitive interface, accessible to all ages. The touch-to-speak feature simulates a real classroom experience.",
+                color: "from-purple-500 to-pink-400"
+              },
+              {
+                icon: <Brain className="h-12 w-12" />,
+                title: "Personalized Learning",
+                description: "The AI-powered teacher provides personalized support, answering questions and helping students learn at their own pace.",
+                color: "from-pink-500 to-rose-400"
+              },
+              {
+                icon: <Languages className="h-12 w-12" />,
+                title: "Indian Language Support",
+                description: "Supports all major Indian languages, with AI teachers communicating in Indian English slang for better comfort and engagement.",
+                color: "from-amber-500 to-yellow-400"
+              },
+              {
+                icon: <Users className="h-12 w-12" />,
+                title: "Engaging Experience",
+                description: "Interactive features and real-time feedback make learning fun and effective for students of all ages.",
+                color: "from-indigo-500 to-blue-400"
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-transparent"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-6`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-white transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 group-hover:text-gray-100 transition-colors duration-300">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
 
-        <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}>
-          <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl text-center mb-8">Why First Rank Stands Out</h3>
-          <motion.div className="grid gap-8 md:grid-cols-3" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <BenefitCard icon={<Star className="text-orange-500" />} title="Comprehensive Curriculum" description="First Rank covers the entire curriculum, ensuring students have access to a vast repository of knowledge." />
-            <BenefitCard icon={<Users className="text-teal-500" />} title="Engaging Learning Experience" description="Interactive features, such as Q&A sessions and touch-to-speak functionality, make learning fun and engaging." />
-            <BenefitCard icon={<ShieldCheck className="text-red-500" />} title="Parental Peace of Mind" description="With robust safety features, parents can trust that their children are learning in a secure and responsible environment." />
-          </motion.div>
+        <motion.div 
+          variants={fadeIn} 
+          initial="initial" 
+          whileInView="animate" 
+          viewport={{ once: true, margin: "-100px" }} 
+          className="pt-20"
+        >
+          {/* <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 mb-4">
+              Why First Rank Stands Out
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Experience the difference with our unique approach to digital learning
+            </p>
+          </motion.div> */}
+
+          {/* <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid gap-8 md:grid-cols-3"
+          >
+            {[
+              {
+                icon: <BookOpen className="h-12 w-12" />,
+                title: "Comprehensive Curriculum",
+                description: "Covers the entire curriculum with a vast repository of knowledge, ensuring no topic is left behind.",
+                color: "from-orange-500 to-amber-400"
+              },
+              {
+                icon: <Users className="h-12 w-12" />,
+                title: "Engaging Learning",
+                description: "Interactive Q&A sessions and touch-to-speak functionality make learning fun and effective.",
+                color: "from-teal-500 to-emerald-400"
+              },
+              {
+                icon: <ShieldCheck className="h-12 w-12" />,
+                title: "Parental Peace of Mind",
+                description: "Robust safety features ensure a secure learning environment for children of all ages.",
+                color: "from-red-500 to-pink-400"
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-transparent"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-6`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-white transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 group-hover:text-gray-100 transition-colors duration-300">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div> */}
         </motion.div>
 
         <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="text-center bg-muted p-8 rounded-lg">
