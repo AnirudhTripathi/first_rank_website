@@ -5,10 +5,6 @@ import Image from "next/image";
 import { ShieldCheck, BookOpen, Hand, Brain, Languages, Users, Download } from "lucide-react";
 
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const fadeIn: Variants = {
   initial: { opacity: 0, y: 30 },
